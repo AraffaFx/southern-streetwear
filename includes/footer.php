@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const itemHTML = `
                 <div class="cart-item">
-                    <img src="<?php echo $BASE_URL; ?>${item.image}" alt="${item.name}" class="cart-item-img">
+                    <img src="${'<?php echo $BASE_URL; ?>' + item.image}" alt="${item.name}" class="cart-item-img">
                     <div class="cart-item-info">
                         <div class="cart-item-title">${item.name}</div>
                         <div class="cart-item-price">Rp ${parseInt(item.price).toLocaleString('id-ID')} (x${item.quantity})</div>

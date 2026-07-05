@@ -88,7 +88,7 @@ if (!isset($BASE_URL)) {
                         data-id="1"
                         data-name="Heavyweight Canvas Jacket"
                         data-price="850000"
-                        data-image="<?php echo $BASE_URL; ?>gambar-katalog-1.jpg"
+                        data-image="gambar-katalog-1.jpg"
                         onclick="addToCart(this.dataset.id, this.dataset.name, this.dataset.price, this.dataset.image)">
                         ADD TO BAG
                     </button>
@@ -115,7 +115,7 @@ if (!isset($BASE_URL)) {
                         data-id="2"
                         data-name="Signature Boxy Tee"
                         data-price="350000"
-                        data-image="<?php echo $BASE_URL; ?>gambar-katalog-2.jpg"
+                        data-image="gambar-katalog-2.jpg"
                         onclick="addToCart(this.dataset.id, this.dataset.name, this.dataset.price, this.dataset.image)">
                         ADD TO BAG
                     </button>
@@ -142,7 +142,7 @@ if (!isset($BASE_URL)) {
                         data-id="3"
                         data-name="Utility Work Pants"
                         data-price="450000"
-                        data-image="<?php echo $BASE_URL; ?>gambar-katalog-3.jpg"
+                        data-image="gambar-katalog-3.jpg"
                         onclick="addToCart(this.dataset.id, this.dataset.name, this.dataset.price, this.dataset.image)">
                         ADD TO BAG
                     </button>
@@ -169,7 +169,7 @@ if (!isset($BASE_URL)) {
                         data-id="4"
                         data-name="Premium Cotton Hoodie"
                         data-price="650000"
-                        data-image="<?php echo $BASE_URL; ?>gambar-katalog-4.jpg"
+                        data-image="gambar-katalog-4.jpg"
                         onclick="addToCart(this.dataset.id, this.dataset.name, this.dataset.price, this.dataset.image)">
                         ADD TO BAG
                     </button>
