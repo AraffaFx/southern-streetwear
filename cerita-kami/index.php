@@ -11,6 +11,11 @@ $page_title = 'Cerita Kami | Southern Streetwear';
 
 // Naik satu level untuk menemukan folder 'includes'
 include '../includes/header.php';
+
+// Pastikan $BASE_URL tersedia
+if (!isset($BASE_URL)) {
+    $BASE_URL = '/';
+}
 ?>
 
 <!-- ============================================================
@@ -40,7 +45,7 @@ include '../includes/header.php';
             <div class="story-image-col">
                 <div class="image-frame story-image-frame">
                     <?php /* Taruh file 'gambar-cerita-1.jpg' di folder cerita-kami/ */ ?>
-                    <img src="gambar-cerita-1.jpg"
+                    <img src="<?php echo $BASE_URL; ?>cerita-kami/gambar-cerita-1.jpg"
                          alt="Workshop Southern - pengrajin bekerja di bawah lampu industri dengan latar beton">
                 </div>
             </div>
@@ -63,7 +68,7 @@ include '../includes/header.php';
             <div class="process-detail-col">
                 <div class="image-frame">
                     <?php /* Taruh file 'gambar-cerita-2.jpg' di folder cerita-kami/ */ ?>
-                    <img src="gambar-cerita-2.jpg"
+                    <img src="<?php echo $BASE_URL; ?>cerita-kami/gambar-cerita-2.jpg"
                          alt="Close-up tekstur kain katun berat premium Southern dengan jahitan presisi">
                 </div>
                 <h3 class="detail-label">01 / MATERIALITY</h3>
@@ -77,7 +82,7 @@ include '../includes/header.php';
             <div class="process-detail-col">
                 <div class="image-frame">
                     <?php /* Taruh file 'gambar-cerita-3.jpg' di folder cerita-kami/ */ ?>
-                    <img src="gambar-cerita-3.jpg"
+                    <img src="<?php echo $BASE_URL; ?>cerita-kami/gambar-cerita-3.jpg"
                          alt="Ruang arsitektur urban Jakarta - inspirasi potongan Southern">
                 </div>
                 <h3 class="detail-label">02 / SILHOUETTE</h3>
@@ -94,7 +99,7 @@ include '../includes/header.php';
     <section class="fullbleed-section">
         <?php /* Taruh file 'gambar-cerita-4.jpg' di folder cerita-kami/ */ ?>
         <img class="fullbleed-image"
-             src="gambar-cerita-4.jpg"
+             src="<?php echo $BASE_URL; ?>cerita-kami/gambar-cerita-4.jpg"
              alt="Lantai produksi Southern yang luas dengan mesin jahit industri berjajar rapi">
         <div class="fullbleed-overlay">
             <span class="fullbleed-text">AUTHENTICITY</span>

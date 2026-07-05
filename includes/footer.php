@@ -6,6 +6,19 @@
  * Berisi: elemen <footer> HTML standar, pemanggilan script.js,
  * dan penutup tag </body></html>.
  */
+
+// Pastikan $BASE_URL tersedia (jika belum ada dari header.php)
+if (!isset($BASE_URL)) {
+    $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http";
+    $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+    
+    if (strpos($host, 'localhost') !== false || strpos($host, '127.0.0.1') !== false) {
+        $BASE_URL = $protocol . '://' . $host . '/southern/';
+    } else {
+        $BASE_URL = '/';
+    }
+    $BASE_URL = rtrim($BASE_URL, '/') . '/';
+}
 ?>
 
 <!-- ============================================================
@@ -41,10 +54,10 @@
 /**
  * Memanggil JavaScript halaman yang bersangkutan.
  * Atribut 'defer' = script dijalankan setelah HTML selesai dimuat.
- * 'script.js' relatif terhadap URL halaman saat ini.
+ * Gunakan path relatif agar tetap bekerja di localhost dan Vercel.
  */
 ?>
-<script src="script.js" defer></script>
+<script src="<?php echo $BASE_URL; ?>script.js" defer></script>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
@@ -138,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const itemHTML = `
                 <div class="cart-item">
-                    <img src="<?php echo $base_path; ?>${item.image}" alt="${item.name}" class="cart-item-img">
+                    <img src="<?php echo $BASE_URL; ?>${item.image}" alt="${item.name}" class="cart-item-img">
                     <div class="cart-item-info">
                         <div class="cart-item-title">${item.name}</div>
                         <div class="cart-item-price">Rp ${parseInt(item.price).toLocaleString('id-ID')} (x${item.quantity})</div>

@@ -13,10 +13,16 @@ session_start();
  * 4. include footer.php → menutup </body></html>
  */
 
-$base_path  = './';                              // Root tidak perlu naik folder
+// $base_path akan digantikan dengan $BASE_URL dari header.php
+$base_path  = './';                              // Untuk kompatibilitas
 $page_title = 'Southern | Urban Streetwear Culture';
 
 include 'includes/header.php';
+
+// Pastikan $BASE_URL tersedia
+if (!isset($BASE_URL)) {
+    $BASE_URL = '/';
+}
 ?>
 
 <!-- ============================================================
@@ -31,7 +37,7 @@ include 'includes/header.php';
     <div class="hero-bg">
         <?php /* Taruh file 'gambar-hero.jpg' di folder root (/southern/) */ ?>
         <img class="hero-image"
-             src="gambar-hero.jpg"
+             src="<?php echo $BASE_URL; ?>gambar-hero.jpg"
              alt="Model editorial Southern Streetwear di depan struktur beton brutalisme">
         <div class="hero-overlay"></div>
     </div>
@@ -70,7 +76,7 @@ include 'includes/header.php';
             <div class="product-image-wrapper">
                 <?php /* Taruh file 'gambar-katalog-1.jpg' di folder root */ ?>
                 <img class="product-image"
-                     src="gambar-katalog-1.jpg"
+                     src="<?php echo $BASE_URL; ?>gambar-katalog-1.jpg"
                      alt="Heavyweight Canvas Jacket - Jaket kanvas premium boxy Southern">
             </div>
             <div class="product-info">
@@ -82,7 +88,7 @@ include 'includes/header.php';
                         data-id="1"
                         data-name="Heavyweight Canvas Jacket"
                         data-price="850000"
-                        data-image="gambar-katalog-1.jpg"
+                        data-image="<?php echo $BASE_URL; ?>gambar-katalog-1.jpg"
                         onclick="addToCart(this.dataset.id, this.dataset.name, this.dataset.price, this.dataset.image)">
                         ADD TO BAG
                     </button>
@@ -97,7 +103,7 @@ include 'includes/header.php';
             <div class="product-image-wrapper">
                 <?php /* Taruh file 'gambar-katalog-2.jpg' di folder root */ ?>
                 <img class="product-image"
-                     src="gambar-katalog-2.jpg"
+                     src="<?php echo $BASE_URL; ?>gambar-katalog-2.jpg"
                      alt="Signature Boxy Tee - Kaos katun oversize Southern">
             </div>
             <div class="product-info">
@@ -109,7 +115,7 @@ include 'includes/header.php';
                         data-id="2"
                         data-name="Signature Boxy Tee"
                         data-price="350000"
-                        data-image="gambar-katalog-2.jpg"
+                        data-image="<?php echo $BASE_URL; ?>gambar-katalog-2.jpg"
                         onclick="addToCart(this.dataset.id, this.dataset.name, this.dataset.price, this.dataset.image)">
                         ADD TO BAG
                     </button>
@@ -124,7 +130,7 @@ include 'includes/header.php';
             <div class="product-image-wrapper">
                 <?php /* Taruh file 'gambar-katalog-3.jpg' di folder root */ ?>
                 <img class="product-image"
-                     src="gambar-katalog-3.jpg"
+                     src="<?php echo $BASE_URL; ?>gambar-katalog-3.jpg"
                      alt="Utility Work Pants - Celana drill wide-leg Southern">
             </div>
             <div class="product-info">
@@ -136,7 +142,7 @@ include 'includes/header.php';
                         data-id="3"
                         data-name="Utility Work Pants"
                         data-price="450000"
-                        data-image="gambar-katalog-3.jpg"
+                        data-image="<?php echo $BASE_URL; ?>gambar-katalog-3.jpg"
                         onclick="addToCart(this.dataset.id, this.dataset.name, this.dataset.price, this.dataset.image)">
                         ADD TO BAG
                     </button>
@@ -151,7 +157,7 @@ include 'includes/header.php';
             <div class="product-image-wrapper">
                 <?php /* Taruh file 'gambar-katalog-4.jpg' di folder root */ ?>
                 <img class="product-image"
-                     src="gambar-katalog-4.jpg"
+                     src="<?php echo $BASE_URL; ?>gambar-katalog-4.jpg"
                      alt="Premium Cotton Hoodie - Hoodie 450GSM oversize Southern">
             </div>
             <div class="product-info">
@@ -163,7 +169,7 @@ include 'includes/header.php';
                         data-id="4"
                         data-name="Premium Cotton Hoodie"
                         data-price="650000"
-                        data-image="gambar-katalog-4.jpg"
+                        data-image="<?php echo $BASE_URL; ?>gambar-katalog-4.jpg"
                         onclick="addToCart(this.dataset.id, this.dataset.name, this.dataset.price, this.dataset.image)">
                         ADD TO BAG
                     </button>
@@ -194,7 +200,7 @@ include 'includes/header.php';
         <!-- Kolom gambar (kanan di desktop) -->
         <div class="lookbook-image-wrapper">
             <?php /* Taruh file 'gambar-lookbook.jpg' di folder root */ ?>
-            <img src="gambar-lookbook.jpg"
+            <img src="<?php echo $BASE_URL; ?>gambar-lookbook.jpg"
                  alt="Suasana urban malam hari dengan model di kejauhan - lookbook Southern">
         </div>
 

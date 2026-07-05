@@ -2,6 +2,29 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
+// ============================================================
+// DYNAMIC BASE URL CONFIGURATION - AUTO-DETECT LOCALHOST/VERCEL
+// ============================================================
+/**
+ * Mendeteksi environment secara otomatis:
+ * - Di localhost: BASE_URL = 'http://localhost/southern/'
+ * - Di Vercel (production): BASE_URL = '/'
+ */
+$protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http";
+$host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+
+// Cek apakah ini localhost
+if (strpos($host, 'localhost') !== false || strpos($host, '127.0.0.1') !== false) {
+    $BASE_URL = $protocol . '://' . $host . '/southern/';
+} else {
+    // Di Vercel/Production - pakai root domain
+    $BASE_URL = '/';
+}
+
+// Pastikan BASE_URL selalu berakhir dengan slash
+$BASE_URL = rtrim($BASE_URL, '/') . '/';
+
 /**
  * header.php — Bagian "kepala" website Southern
  * ================================================
@@ -506,13 +529,12 @@ if (session_status() === PHP_SESSION_NONE) {
     <?php
     /**
      * Link ke CSS halaman yang bersangkutan.
-     * Setiap halaman punya style.css-nya sendiri di folder yang sama.
-     * 'style.css' → relatif terhadap URL halaman saat ini (bukan lokasi header.php).
-     * Contoh: http://localhost/southern/         → root/style.css
-     *         http://localhost/southern/cerita-kami/ → cerita-kami/style.css
+     * Gunakan path relatif agar tetap bekerja di localhost dan Vercel.
+     * Contoh: /            → ./style.css
+     *         /cerita-kami/ → ./style.css (file CSS di folder yang sama)
      */
     ?>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="<?php echo $BASE_URL; ?>style.css">
 </head>
 
 <?php
